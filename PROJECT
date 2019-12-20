@@ -1,0 +1,3 @@
+domain: k8s.io
+repo: github.com/govargo/foo-controller-kubebuilder
+version: "2"
