@@ -1,3 +1,7 @@
 domain: k8s.io
 repo: github.com/govargo/foo-controller-kubebuilder
+resources:
+- group: samplecontroller
+  kind: Foo
+  version: v1alpha1
 version: "2"
