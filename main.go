@@ -18,6 +18,7 @@ package main
 import (
 	"flag"
 	"os"
+	"time"
 
 	samplecontrollerv1alpha1 "github.com/govargo/foo-controller-kubebuilder/api/v1alpha1"
 	"github.com/govargo/foo-controller-kubebuilder/controllers"
