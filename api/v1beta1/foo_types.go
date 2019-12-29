@@ -34,6 +34,11 @@ type FooSpec struct {
 
 	// the replicas of deployment which is owned by foo
 	Replicas *int32 `json:"replicas"`
+
+	// +kubebuilder:validation:Optional
+
+	// the new field for conversion
+	Foo string `json:"foo"`
 }
 
 // FooStatus defines the observed state of Foo
