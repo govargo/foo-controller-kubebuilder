@@ -16,7 +16,9 @@ limitations under the License.
 package v1alpha1
 
 import (
+	apierrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/util/validation/field"
 	ctrl "sigs.k8s.io/controller-runtime"
 	logf "sigs.k8s.io/controller-runtime/pkg/runtime/log"
@@ -75,6 +77,21 @@ func (r *Foo) ValidateDelete() error {
 
 	// TODO(user): fill in your validation logic upon object deletion.
 	return nil
+}
+
+// We validate the DeployName of the Foo.
+func (r *Foo) validateFoo() error {
+	var allErrs field.ErrorList
+	if err := r.validateDeploymentName(); err != nil {
+		allErrs = append(allErrs, err)
+	}
+	if len(allErrs) == 0 {
+		return nil
+	}
+
+	return apierrors.NewInvalid(
+		schema.GroupKind{Group: "samplecontroller.k8s.io", Kind: "Foo"},
+		r.Name, allErrs)
 }
 
 // Validating the the length of DeploymentName field.
