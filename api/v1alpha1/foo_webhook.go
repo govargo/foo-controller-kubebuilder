@@ -17,6 +17,7 @@ package v1alpha1
 
 import (
 	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/util/validation/field"
 	ctrl "sigs.k8s.io/controller-runtime"
 	logf "sigs.k8s.io/controller-runtime/pkg/runtime/log"
 	"sigs.k8s.io/controller-runtime/pkg/webhook"
@@ -73,5 +74,15 @@ func (r *Foo) ValidateDelete() error {
 	foolog.Info("validate delete", "name", r.Name)
 
 	// TODO(user): fill in your validation logic upon object deletion.
+	return nil
+}
+
+// Validating the the length of DeploymentName field.
+func (r *Foo) validateDeploymentName() *field.Error {
+	// object name must be no more than 253 characters.
+	// ref. https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+	if len(r.Spec.DeploymentName) > 253 {
+		return field.Invalid(field.NewPath("spec").Child("deploymentName"), r.Spec.DeploymentName, "must be no more than 253 characters")
+	}
 	return nil
 }
