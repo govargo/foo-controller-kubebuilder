@@ -59,5 +59,20 @@ Most of the conversion is straightforward copying, except for converting our cha
 
 // ConvertFrom converts from the Hub version (v1alpha1) to this version.
 func (dst *Foo) ConvertFrom(srcRaw conversion.Hub) error {
+	src := srcRaw.(*samplecontrollerv1alpha1.Foo)
+
+	// just copy DeploymentName value to Foo
+	dst.Spec.Foo = src.Spec.DeploymentName
+
+	// ObjectMeta
+	dst.ObjectMeta = src.ObjectMeta
+
+	// Spec
+	dst.Spec.DeploymentName = src.Spec.DeploymentName
+	dst.Spec.Replicas = src.Spec.Replicas
+
+	// Status
+	dst.Status.AvailableReplicas = src.Status.AvailableReplicas
+
 	return nil
 }
