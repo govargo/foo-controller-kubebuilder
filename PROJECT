@@ -4,4 +4,7 @@ resources:
 - group: samplecontroller
   kind: Foo
   version: v1alpha1
+- group: samplecontroller
+  kind: Foo
+  version: v1beta1
 version: "2"

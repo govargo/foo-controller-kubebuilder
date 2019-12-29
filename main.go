@@ -21,6 +21,7 @@ import (
 	"time"
 
 	samplecontrollerv1alpha1 "github.com/govargo/foo-controller-kubebuilder/api/v1alpha1"
+	samplecontrollerv1beta1 "github.com/govargo/foo-controller-kubebuilder/api/v1beta1"
 	"github.com/govargo/foo-controller-kubebuilder/controllers"
 	"k8s.io/apimachinery/pkg/runtime"
 	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
@@ -39,6 +40,7 @@ func init() {
 	_ = clientgoscheme.AddToScheme(scheme)
 
 	_ = samplecontrollerv1alpha1.AddToScheme(scheme)
+	_ = samplecontrollerv1beta1.AddToScheme(scheme)
 	// +kubebuilder:scaffold:scheme
 }
 
