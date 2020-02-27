@@ -27,6 +27,16 @@ foo reconcile it and the deployment keeps the foo.spec.replicas.
 
 Before you start this operator, you must prepare the kubernetes cluster using like [Minikube](https://github.com/kubernetes/minikube), [Kind](https://github.com/kubernetes-sigs/kind).
 
+We must prepare [cert-manager](https://github.com/jetstack/cert-manager) to deploy admission webhook.
+
+```
+$ kubectl create namespace cert-manager
+$ kubectl apply -f https://github.com/jetstack/cert-manager/releases/download/v0.11.0/cert-manager.yaml
+
+# Confirm the cert-manager pod's running
+$ kubectl get pods -n cert-manager
+```
+
 Clone source code
 
 ```
