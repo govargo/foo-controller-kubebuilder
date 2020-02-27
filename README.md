@@ -2,7 +2,7 @@
 
 This Controller is developed by Kubebuilder v2.2.0
 
-インプレスR&D NextPublishing「実践入門 Kubernetesカスタムコントローラへの道」の第七章「Admission Webhook」に掲載したサンプルコード用のリポジトリです。  
+インプレスR&D NextPublishing「実践入門 Kubernetesカスタムコントローラーへの道」の第七章「Admission Webhook」に掲載したサンプルコード用のリポジトリです。  
 
 https://nextpublishing.jp/book/11389.html
 
