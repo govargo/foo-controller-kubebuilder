@@ -102,11 +102,7 @@ func (r *FooReconciler) Reconcile(req ctrl.Request) (ctrl.Result, error) {
 	if _, err := ctrl.CreateOrUpdate(ctx, r.Client, deploy, func() error {
 
 		// set the replicas from foo.Spec
-		replicas := int32(1)
-		if foo.Spec.Replicas != nil {
-			replicas = *foo.Spec.Replicas
-		}
-		deploy.Spec.Replicas = &replicas
+		deploy.Spec.Replicas = foo.Spec.Replicas
 
 		// set a label for our deployment
 		labels := map[string]string{
